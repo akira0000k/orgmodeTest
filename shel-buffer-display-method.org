@@ -1,0 +1,113 @@
+* shell画面の出方が変わった
+** 経緯
+- 以前は M-x shell を発行した時の画面枠でシェルが表示された
+- 25.1 からシェルが下に出るようになった
+- 今はまた元に戻ったようだ。
+** るびきち氏の記事
+display-buffer-alist
+
+http://emacs.rubikitch.com/shell-emacs25/
+
+#+begin_example
+るびきち
+【Emacs 25.1】M-x shellが別ウィンドウで表示されるようになったヨ
+
+Emacs 25.1からM-x shellの表示方法が変更になりました。
+Emacs 24.5までは現在選択しているウィンドウに*shell*バッファが表示されましたが、
+Emacs 25.1からは別ウィンドウで表示されるようになりました。
+
+旧来の表示方法に戻したいのならば、以下の設定を加えます。
+
+(add-to-list 'display-buffer-alist
+     '("^\\*shell\\*$" . (display-buffer-same-window))).
+#+end_example
+
+** 調査
+るびきち氏の記事に出てくる display-buffer-alist はどうなっているか。
+
+~f1 v display-buffer-alist~
+
+ここには nil が入っていた。\\
+変数カスタマイズ画面を見ても要領を得ないので、一旦
+るびきち氏の (add-to-list..以下の設定を入れて見てもういちどカスタマイズ画面をみた。
+
+customize
+#+begin_example
+For help using this buffer, see Easy Customization in the Emacs manual.
+ 
+                                          Search 
+ 
+Operate on all settings in this buffer:
+ Revert...   Apply   Apply and Save 
+ 
+Hide Display Buffer Alist:
+Alist:
+INS DEL Condition: Value Menu Regexp: ^\*shell\*$
+            Action:
+            Action functions: Value Menu Function: [Value Menu] display-buffer-same-window
+            Action arguments:                       ^^^^^^^^^^
+            INS
+INS
+    State : CHANGED outside Customize.
+   Alist of user-defined conditional actions for ‘display-buffer’. Hide
+   Its value takes effect before processing the ACTION argument of
+   ‘display-buffer’ and before ‘display-buffer-base-action’ and
+   ‘display-buffer-fallback-action’, but after
+   ‘display-buffer-overriding-action’, which see.
+    
+   If non-nil, this is an alist of elements (CONDITION . ACTION),
+   where:
+    
+    CONDITION is either a regexp matching buffer names, or a
+     function that takes two arguments - a buffer name and the
+     ACTION argument of ‘display-buffer’ - and returns a boolean.
+    
+    ACTION is a cons cell (FUNCTIONS . ALIST), where FUNCTIONS is an
+     action function or a list of action functions and ALIST is an
+     action alist.  Each such action function should accept two
+     arguments: a buffer to display and an alist of the same form as
+     ALIST.  See ‘display-buffer’ for details.
+    
+   ‘display-buffer’ scans this alist until it either finds a
+   matching regular expression or the function specified by a
+   condition returns non-nil.  In any of these cases, it adds the
+   associated action to the list of actions it will try.
+Groups: Windows
+#+end_example
+
+ここで Value Menu の所にカーソルを持っていってENTERを押す。
+
+[Value Menu] の選択\\
+#+begin_example
+Available choices:
+ 
+0 = --
+1 = display-buffer-reuse-window
+2 = display-buffer-pop-up-window
+3 = display-buffer-same-window
+4 = display-buffer-pop-up-frame
+5 = display-buffer-in-child-frame
+6 = display-buffer-below-selected
+7 = display-buffer-at-bottom
+8 = display-buffer-in-previous-window
+9 = display-buffer-use-least-recent-window
+: = display-buffer-use-some-window
+; = display-buffer-use-some-frame
+< = Other function
+ 
+C-g = Quit
+#+end_example
+
+使えそうなのは\\
+display-buffer-same-window        default 現窓を置き換え\\
+display-buffer-below-selected     25.1 現窓の下半分\\
+display-buffer-at-bottom          全部の窓を押し上げるかんじ <==これにしてみる
+
+** emacs初期設定に次の行を書いておく。
+#+begin_example
+(add-to-list 'display-buffer-alist
+	     ;;'("^\\*shell\\*$" . (display-buffer-same-window))  ;; default
+	     ;;'("^\\*shell\\*$" . (display-buffer-below-selected))  ;; emacs 25.1
+	     '("^\\*shell\\*$" . (display-buffer-at-bottom))
+	     )
+#+end_example

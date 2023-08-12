@@ -1,0 +1,107 @@
+* org-mode の関数名
+** 気づき
+emacsでは関数名は機能を表して、キーマップで操作と対応づけるのが伝統だが、org-modeはちがう。
+emacs ではめずらしく、キーバインドそのものを関数名にしたものが多い。
+org-shiftright などなど
+カーソルの位置によって違う動作をするからだ。カスタマイズは難しいだろう。
+
+** 関数help
+org-shiftright is an interactive byte-compiled Lisp function in
+‘org.el’.
+
+It is bound to S-<right>, <menu-bar> <org> <TODO Lists> <Select
+keyword> <Next keyword>, <menu-bar> <org> <Dates and Scheduling>
+<Change Date> <1 Day Later>.
+
+(org-shiftright &optional ARG)
+
+Act on the current element according to context.
+This does one of the following:
+
+- switch a timestamp at point one day into the future
+- on a headline, switch to the next TODO keyword
+- on an item, switch entire list to the next bullet type
+- on a property line, switch to the next allowed value
+- on a clocktable definition line, move time block into the future
+- in a table, move a single cell right
+
+[back]
+
+** 関数定義
+org-shiftright の中身を見てみると、関数内部で場合わけの羅列である
+
+#+begin_example
+(defun org-shiftright (&optional arg)
+  "Act on the current element according to context.
+This does one of the following:
+
+- switch a timestamp at point one day into the future
+- on a headline, switch to the next TODO keyword
+- on an item, switch entire list to the next bullet type
+- on a property line, switch to the next allowed value
+- on a clocktable definition line, move time block into the future
+- in a table, move a single cell right"
+  (interactive "P")
+  (cond
+   ((run-hook-with-args-until-success 'org-shiftright-hook))
+   ((and org-support-shift-select (org-region-active-p))
+    (org-call-for-shift-select 'forward-char))
+   ((org-at-timestamp-p 'lax) (call-interactively 'org-timestamp-up-day))
+   ((and (not (eq org-support-shift-select 'always))
+	 (org-at-heading-p))
+    (let ((org-inhibit-logging
+	   (not org-treat-S-cursor-todo-selection-as-state-change))
+	  (org-inhibit-blocking
+	   (not org-treat-S-cursor-todo-selection-as-state-change)))
+      (org-call-with-arg 'org-todo 'right)))
+   ((or (and org-support-shift-select
+	     (not (eq org-support-shift-select 'always))
+	     (org-at-item-bullet-p))
+	(and (not org-support-shift-select) (org-at-item-p)))
+    (org-call-with-arg 'org-cycle-list-bullet nil))
+   ((and (not (eq org-support-shift-select 'always))
+	 (org-at-property-p))
+    (call-interactively 'org-property-next-allowed-value))
+   ((org-clocktable-try-shift 'right arg))
+   ((and (not (eq org-support-shift-select 'always))
+	 (org-at-table-p))
+    (org-table-move-cell-right))
+   ((run-hook-with-args-until-success 'org-shiftright-final-hook))
+   (org-support-shift-select
+    (org-call-for-shift-select 'forward-char))
+   (t (org-shiftselect-error))))
+#+end_example
+
+** ターミナルの場合
+
+ターミナルでは矢印キーなどが使えないこともあるので、特別に代替キーが割り当てられている。
+これらは emacs.app では定義されていない。
+#+begin_example
+ESC <left>	org-metaleft
+
+C-c <down>	org-shiftdown
+C-c <left>	org-shiftleft
+C-c <right>	org-shiftright
+C-c <up>	org-shiftup
+
+C-c C-x RET	org-meta-return
+
+C-c C-x D	org-shiftmetadown
+C-c C-x L	org-shiftmetaleft
+C-c C-x M	org-insert-todo-heading
+C-c C-x R	org-shiftmetaright
+C-c C-x U	org-shiftmetaup
+C-c C-x l	org-metaleft
+C-c C-x m	org-meta-return
+C-c C-x r	org-metaright
+C-c C-x u	org-metaup
+C-c C-x <left>	org-shiftcontrolleft
+C-c C-x <right>			org-shiftcontrolright
+#+end_example
+
+** バグ発見
+
+これが emacs.appで定義されていない\\
+ESC <left>	org-metaleft
+
+ESC <right> は出来るのに ESC <left>はダメで M-<left> にしないといけないのはバグっぽい。

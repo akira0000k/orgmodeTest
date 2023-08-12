@@ -1,0 +1,54 @@
+* イタリックなどのテスト
+normal\\
+NORMAL
+** イタリック
+/italic/\\
+/ITALIC/
+** ボールド
+*BOLD*
+** 下線
+_UNDERLINE_
+** 取り消し銭
++SOLD OUT+
+** コード
+~(org-mode)~\\
+       ~(org-mode)~
+#+begin_src
+  (org-mode)
+    (org-mode)
+#+end_src
+** verbatim ありのままに
+=verbatim=\\
+==verbatim==\\
+=v/erb/a=tim=
+
+** italic test
+/italic/
+
+** sample
+/One may expect this whole sentence to be italicized, but the following ~user/?variable~ contains =/= character, which effectively stops emphasis there./
+
+** sample2
+/One may expect this whole sentence to be italicized, but the following user=/=?variable contains =/= character, which effectively stops emphasis there./
+
+** sample3
+/One may expect this whole sentence to be italicized, but the following ~user~ =/= ~?variable~ contains =/= character, which effectively stops emphasis there./
+
+** sample4 zero width space between "user" and "/​?variable"
+/One may expect this whole sentence to be italicized, but the following ~user​/?variable~ contains =/= character, which effectively stops emphasis there./
+
+
+[[https://orgmode.org/manual/Emphasis-and-Monospace.html]]
+
+[​[1,2]]
+
+#+begin_example
+type
+[
+C-x 8 RET zero width  space RET
+[1,2]]
+#+end_example
+[X[1,2]]
+
+where ‘X’ denotes the zero width space character. 
+[[https://orgmode.org/manual/Escape-Character.html]]

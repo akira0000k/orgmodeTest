@@ -1,0 +1,57 @@
+* M-s キーバインドで隠されていた機能
+
+** 今まで
+M-s は、内部シェル起動 M-x shell に割り当てていた。これはいくつかの機能を隠すことになっていたので、
+シェル起動を M-x s に変更した。
+#+begin_example
+;; (global-set-key (kbd "M-s") 'shell) ;; M-x shell
+(defun s() "shell start" (interactive) (shell))
+#+end_example
+
+** emacsオリジナルのキーバインドから M-s を探す
+サーチ関連のコマンドが多かった。\\
+M-s o が M-x occur の変わりになることがわかる。
+
+~M-x occur M-s~
+#+begin_example
+20 matches for "M-s" in buffer: Xterm-console-keybind-0.txt
+   1146:M-s		Prefix Command
+   1188:M-s .		isearch-forward-symbol-at-point
+   1189:M-s _		isearch-forward-symbol
+   1191:M-s o		occur
+   1192:M-s w		isearch-forward-word
+
+   1190:M-s h		Prefix Command
+   1624:M-s h .		highlight-symbol-at-point
+   1625:M-s h f		hi-lock-find-patterns
+   1626:M-s h l		highlight-lines-matching-regexp
+   1627:M-s h p		highlight-phrase
+   1628:M-s h r		highlight-regexp
+   1629:M-s h u		unhighlight-regexp
+   1630:M-s h w		hi-lock-write-interactive-patterns
+   
+   1187:M-s ESC		Prefix Command
+   1632:M-s M-.		isearch-forward-thing-at-point
+   1633:M-s M-w		eww-search-words
+
+   1100:C-M-s		isearch-forward-regexp
+
+   -s-はsuper key (Mac command)
+   1160:M-s-f		isearch-forward-regexp
+   1159:M-s-F		isearch-backward-regexp
+   1161:M-s-h		ns-do-hide-others
+#+end_example
+
+** dired mode のローカルキーバインド
+#+begin_example
+;; (local-set-key "\M-s" 'shell)  f       ;;emacs23  override M-s prefix
+#+end_example
+
+diredでも M-s が使えるとこれらのサーチコマンドが使用可能となった。
+
+#+begin_example
+M-s a C-s	dired-do-isearch
+M-s a C-M-s	dired-do-isearch-regexp
+M-s f C-s	dired-isearch-filenames
+M-s f C-M-s	dired-isearch-filenames-regexp
+#+end_example

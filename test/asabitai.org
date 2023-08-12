@@ -1,0 +1,21 @@
+* テーブルの罫線
+[[https://asobitai.hatenablog.com/entry/2016/07/24/095710]]
+
+あそびたい
+org-modeのTableで罫線を入れる方法
+よっしー　さん
+
+|---+-------+-------+---------+---------+---------+-----------------|
+|   | Name  | Hair  | Height  | Weight  | English | Result          |
+|---+-------+-------+---------+---------+---------+-----------------|
+| / | <>    | <     |         |         | >       | <>              |
+|---+-------+-------+---------+---------+---------+-----------------|
+|   | Emi   | brown | average | heavy   | yes     | foreign student |
+|   | Mario | brown | short   | average | no      | Japanese        |
+|   | Jun   | black | tall    | average | no      | Japanese        |
+|   | Lisa  | brown | tall    | average | yes     | foreign student |
+|   | Jo    | red   | average | light   | yes     | foreign student |
+|   | Mie   | black | short   | light   | yes     | Japanese        |
+|   | Ran   | black | average | light   | yes     | Japanese        |
+|   | Mai   | brown | tall    | heavy   | no      | Japanese        |
+|---+-------+-------+---------+---------+---------+-----------------|
