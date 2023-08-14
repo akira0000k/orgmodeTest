@@ -99,9 +99,10 @@ C-g = Quit
 #+end_example
 
 使えそうなのは\\
-display-buffer-same-window        default 現窓を置き換え\\
-display-buffer-below-selected     25.1 現窓の下半分\\
-display-buffer-at-bottom          全部の窓を押し上げるかんじ <==これにしてみる
+display-buffer-same-window        default 現窓を置き換え \\
+display-buffer-below-selected     25.1 現窓の下半分。\\
+display-buffer-below-selected     25.1 現窓の下半分。\\
+    display-buffer-at-bottom          全部の窓を押し上げるかんじ <==これにしてみる
 
 ** emacs初期設定に次の行を書いておく。
 #+begin_example
