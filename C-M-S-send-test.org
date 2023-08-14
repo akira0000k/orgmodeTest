@@ -25,12 +25,12 @@ Esc---C-x
 115	73	163	s
 #+end_example
 
-一見うまくいくかに思えたが、
-lisp-modeでは\\
-Esc C-x が\\
-~C-M-x (translated from <escape> C-x) runs the command eval-defun~\\
-なのでかち合う
+一見うまくいくかに思えたが、lisp-modeでは
 
+Esc C-x が\\
+~C-M-x (translated from <escape> C-x) runs the command eval-defun~
+
+なのでかち合う。\\
 @S が画面に出た
 
 
