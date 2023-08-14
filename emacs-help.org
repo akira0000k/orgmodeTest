@@ -1,6 +1,7 @@
-* 簡単なEmacs 使用法
-* はじめに
-** 起動と終了
+# * emacs-help.org
+** 簡単なEmacs 使用法
+** はじめに
+*** 起動と終了
 
     #+begin_quote
     $ emacs .
@@ -18,7 +19,7 @@
     #+end_example
     C-x C-c　　　　　Ctrl を押したまま x c  で終了する
 
-** キー表記方法
+*** キー表記方法
     | 表記 | 押し方      |                       |
     |------+-------------+-----------------------|
     | C-x  | Control + x |                       |
@@ -40,7 +41,6 @@
     | /         | <                             | <                    |
 
 
-* 機能別キーバインド
 ** dired ファイラー表示
 
     | 標準  | 代替キー |                                     |
@@ -207,14 +207,14 @@
 *** Shiftキーをつかった選択 (最近風)
 
     #+begin_example
-    ~S-left    S-right      S-C-left	 S-C-right~
-    ~S-up      S-down~
-    ~S-Home	  S-End	       S-C-Home	 S-C-End~
-    ~S-PageUp  S-PageDown~
-    ~C-S-b     C-S-f        M-S-b 	 M-S-f~
-    ~C-S-p     C-S-n~
-    ~C-S-a     C-S-e        C-<       C->~
-    ~M-S-p     M-S-n~
+    S-left    S-right      S-C-left      S-C-right
+    S-up      S-down
+    S-Home    S-End        S-C-Home      S-C-End
+    S-PageUp  S-PageDown
+    C-S-b     C-S-f        M-S-b         M-S-f
+    C-S-p     C-S-n
+    C-S-a     C-S-e        C-<           C->
+    M-S-p     M-S-n
     #+end_example
     Shiftキーを放してカーソル移動すると選択解除
 
@@ -284,10 +284,10 @@
     | C-x RET c | f6       | コーディングシステムの指定をしてコマンドを実行する |
     | /         | <        |                                                    |
     	
-	#+begin_example
-        ~Coding system for following command (default utf-8-unix):~ sjis-dos\\
-        ~Command to execute with sjis-dos:~    ここで C-x C-w などコマンド実行
-	#+end_example
+    #+begin_example
+    Coding system for following command (default utf-8-unix): sjis-dos
+    Command to execute with sjis-dos:    ここで C-x C-w などコマンド実行
+    #+end_example
 
 *** 読み込んだファイルの変更     
 
@@ -310,19 +310,19 @@
     | 文字コード表示 | U          | S         | E           | J          |          |
     | /              | <          |           |             | >          |          |
      
-      #+begin_example
-      例
-      -UUU:**--F1  emacs-help.org   52% (300,85)   (Org) 2:02PM 1.68 ----------------------------------
-      -UUS(DOS)----F1  KOSMAX.CNF     Top (1,0)     Git-main  (Fundamental) 2:03PM 1.17 ---------------
-      #+end_example
+    #+begin_example
+    例
+    -UUU:**--F1  emacs-help.org   52% (300,85)   (Org) 2:02PM 1.68 ----------------------------------
+    -UUS(DOS)----F1  KOSMAX.CNF     Top (1,0)     Git-main  (Fundamental) 2:03PM 1.17 ---------------
+    #+end_example
      
-      通常はファイルを読み込むときは文字コードを自動認識しますがたまに誤認識することがある。
-      
-      強制的に eucで読み込む場合 (半角カナによる文字化け対策)\\
-                ~f6 euc Enter C-x C-f filename~
+    通常はファイルを読み込むときは文字コードを自動認識しますがたまに誤認識することがある。
+    
+    強制的に eucで読み込む場合 (半角カナによる文字化け対策)\\
+              ~f6 euc Enter C-x C-f filename~
 		
-      EUC+cr で上書き保存\\
-                ~f6 euc-jp-unix Enter C-x C-s~
+    EUC+cr で上書き保存\\
+              ~f6 euc-jp-unix Enter C-x C-s~
 
 
 ** いろいろなコマンド
@@ -572,8 +572,8 @@
     #+end_example
   
 
-* コンソール起動する時の設定
-** iTerm2 設定 (Mac OSX)
+** コンソール起動する時の設定
+*** iTerm2 設定 (Mac OSX)
 
     ~/home/user/.emacs.lisp/TERA/Iterm2-default.itermkeymap~
     
@@ -590,7 +590,7 @@
     
     fn キーを押さなくても f1..f12が使えるようにする
 
-** teraterm 設定 (Windows)
+*** teraterm 設定 (Windows)
 
     ~/home/user/.emacs.lisp/TERA/KOSMAX.CNF~   (xterm用)\\
     をteraterm install directory にダウンロードし、
@@ -611,13 +611,13 @@
     テラターム iniファイル
          TermType=xterm               (iniファイルでxtermにする)
 
-** 左Cntl キーの位置について
+*** 左Cntl キーの位置について
 
     Emacsのキー定義では、'A' キーの左が Cntl キーであると操作しやすくなっています。\\
     Windows の Caps Lock キーと 左Cntl キーを入れ替えるのがおすすめです。
 
 
-* 方針
+** 方針
 
 Windows や Mac OSX のキー操作を取り入れてemacsの敷居を低くすることに努めました。\\
 基本的な emacsのキーバインドは一部を除いて残しています。Mac ではemacs流が取り入れられている
