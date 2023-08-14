@@ -279,7 +279,7 @@
     |-----------+----------+----------------------------------------------|
     | C-x RET f |          | 読み込みバッファ内コーディングシステムの変更 |
 
-    Coding system for saving file (default iso-2022-jp):
+    ~Coding system for saving file (default iso-2022-jp):~
 
 *** 文字コード表示
 
