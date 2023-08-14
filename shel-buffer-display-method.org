@@ -99,6 +99,12 @@ C-g = Quit
 #+end_example
 
 使えそうなのは\\
+使えそうなのは、\\
+使えそうなのは。\\
+使えそうなのは\\ 
+  使えそうなのは\\
+abc使えそうなのは\\
+つかえそうなのは\\
 display-buffer-same-window        default 現窓を置き換え \\
 display-buffer-below-selected     25.1 現窓の下半分。\\
 display-buffer-below-selected     25.1 現窓の下半分。\\
