@@ -39,33 +39,17 @@
 
 ** VSCODEでのキーバインド設定結果をまとめます。
 
-*** ページ移動
-| CODE: | PageUp | PageDown | cmd-n | cmd-p |
-| EMax: | PageUp | PageDown |       |       |
-| Term: | PageUp | PageDown |       |       |
-
-注意:\\
-CODEでカット/コピーしたものは Emaxで貼り付けられる。
-
-Emax でカット/コピーしたものは CODEでは貼り付けられない。(マウス以外)
-
-Emax でマウスを使って選択、右ボタンでコピーしたものは CODEで貼り付けられる。\\
-     しかし、Emac自身に対しては、右ボタンで貼り付けたあと、キーでも貼り付けられる。
-
-
 *** ファイル先頭/末尾
 | CODE: | C-home   | C-end   | C-,   | C-.   |
 | EMax: | C-home   | C-end   | opt-, | opt-. |
 | Term: | cmd-home | cmd-end |       |       |
 
-注意:\\
-CODEでカット/コピーしたものは Emaxで貼り付けられる。
+*** ページ移動
+| CODE: | PageUp | PageDown | cmd-n | cmd-p |
+| EMax: | PageUp | PageDown |       |       |
+| Term: | PageUp | PageDown |       |       |
 
-Emax でカット/コピーしたものは CODEでは貼り付けられない。(マウス以外)
-
-Emax でマウスを使って選択、右ボタンでコピーしたものは CODEで貼り付けられる。\\
-     しかし、Emac自身に対しては、右ボタンで貼り付けたあと、キーでも貼り付けられる。
-
+(opt-nはチルダが出るのでダメ)
 
 *** カット/コピー&ペースト
 |       | cut   | copy  | paste |                                     |
@@ -80,10 +64,10 @@ Emax でマウスを使って選択、右ボタンでコピーしたものは CO
 |-------+-------+-------+-------+-------------------------------------|
 | Term: | C-w   | opt-w | C-y   | (zshバッファー)                     |
 
- #+begin_example
- Emax: マウス選択 右ボタンコピー  右ボタン貼り付け/cmd-v
- Term:  マウス選択 右ボタンコピー  右ボタン貼り付け/cmd-v
- #+end_example
+#+begin_example
+Emax: マウス選択 右ボタンコピー  右ボタン貼り付け/cmd-v
+Term:  マウス選択 右ボタンコピー  右ボタン貼り付け/cmd-v
+#+end_example
 
 
 *** 行末までカット&ペースト
@@ -91,10 +75,13 @@ Emax でマウスを使って選択、右ボタンでコピーしたものは CO
 | Emax: | C-k | C-y |                 |
 | Term: | C-k | C-y | (zshバッファー) |
 
- #+begin_example
- Emax: マウス選択 右ボタンコピー  右ボタン貼り付け/cmd-v
- Term:  マウス選択 右ボタンコピー  右ボタン貼り付け/cmd-v
- #+end_example
+注意:\\
+CODEでカット/コピーしたものは Emaxで貼り付けられる。
+
+Emax でカット/コピーしたものは CODEでは貼り付けられない。(マウス以外)
+
+Emax でマウスを使って選択、右ボタンでコピーしたものは CODEで貼り付けられる。\\
+     しかし、Emac自身に対しては、右ボタンで貼り付けたあと、キーでも貼り付けられる。
 
 
 *** backslash
