@@ -45,17 +45,14 @@
 | Term: | cmd-home | cmd-end |       |       |
 
 *** ページ移動
-
 スクロール
 | CODE: | PageUp | PageDown | cmd-n | cmd-p |
 | EMax: | PageUp | PageDown |       |       |
 | Term: | PageUp | PageDown |       |       |
 
-  (opt-nはチルダが出るのでダメ)
+  ~(opt-nはチルダが出るのでダメ)~
 
 *** カット/コピー&ペースト
-
-コピペ
 |       | cut   | copy  | paste |                                     |
 |-------+-------+-------+-------+-------------------------------------|
 | CODE: | cmd-x | cmd-c | cmd-v | (MAC流)                             |
@@ -68,8 +65,10 @@
 |-------+-------+-------+-------+-------------------------------------|
 | Term: | C-w   | opt-w | C-y   | (zshバッファー)                     |
 
- Emax: マウス選択 右ボタンコピー  右ボタン貼り付け/cmd-v\\
+ #+begin_example
+ Emax: マウス選択 右ボタンコピー  右ボタン貼り付け/cmd-v
  Term:  マウス選択 右ボタンコピー  右ボタン貼り付け/cmd-v
+ #+end_example
 
 *** 行末までカット&ペースト
 | CODE: | C-k | C-y |                 |
