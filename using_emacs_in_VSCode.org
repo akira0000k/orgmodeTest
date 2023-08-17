@@ -1,0 +1,109 @@
+** Emacs を MACのVSCodeで使う
+
+** 一つの困難
+   MACだと optionキーでアクセント記号が出る
+   
+   M-n....M-pM-n....M-p\\
+   ˜˜˜˜˜˜˜˜π˜˜˜˜˜˜˜˜˜π
+
+   英語キーボードでは、optionキーでギリシャ文字などが出るが、5種類のアクセントがキー2回押しでつけられる。\\
+   これらをデッドキーという
+   #+begin_example
+   opt+e e = é  アクサンテギュ
+   opt+u u = ü  ウムラウト
+   opt+i i = î  アクサンシルコンフレックス
+   opt+n n = ñ  チルダ
+   opt+_ a = à  アクサングラーヴ
+   #+end_example
+
+   emacs.app や iterm2 ではこれを回避できているが、VSCodeではアクセントが出てしまう。\\
+   メタキーを option にしたときに、M-e M-u M-i M-n M-_ は押さないように気を付ける。
+
+*** Codeを emacs風キーバインドにする
+   Awesome Emacs Keymap 拡張機能をインストール
+
+   メタキーを command キーにする。\\
+   カット&ペーストは cmd-x cmd-c cmd-v
+   
+*** VSCodeのターミナルから emacs -nw を起動。完全ではないがかなり使える。
+   メタキーは option キーを使う\\
+   カット&ペーストは C-x C-c C-v  (cua-mode)
+
+*** VSCodeのターミナルからコマンド入力。
+   メタキーは option キーを使う\\
+   カット&ペーストは C-w opt-w C-y  (zshの機能)
+
+*** ユーザーのキーバインド格納ファイル
+   ~~/Application Support/Code/User/keybindings.json~
+
+
+** VSCODEでのキーバインド設定結果をまとめます。
+
+*** ファイル先頭/末尾
+| CODE: | C-home   | C-end   | C-,   | C-.   |
+| EMax: | C-home   | C-end   | opt-, | opt-. |
+| Term: | cmd-home | cmd-end |       |       |
+
+*** ページ移動
+| CODE: | PageUp | PageDown | cmd-n | cmd-p |
+| EMax: | PageUp | PageDown |       |       |
+| Term: | PageUp | PageDown |       |       |
+  (opt-nはチルダが出るのでダメ)
+
+*** カット/コピー&ペースト
+|       | cut   | copy  | paste |                                     |
+|-------+-------+-------+-------+-------------------------------------|
+| CODE: | cmd-x | cmd-c | cmd-v | (MAC流)                             |
+| CODE: | C-w   | C-c   | C-v   | (C-xは使えない。例 save: C-x C-s)   |
+| CODE: | C-w   | C-S-w | C-y   | (cmd+w はエディターを閉じる)        |
+|-------+-------+-------+-------+-------------------------------------|
+| EMax: | C-x   | C-c   | C-v   | (cua-mode 有効で)                   |
+| Emax: | C-w   | opt-w | C-y   | (emacs originalも有効)              |
+| Emax: | C-w   | opt-w | opt-v | (opt-w のつぎは opt-v がやりやすい) |
+|-------+-------+-------+-------+-------------------------------------|
+| Term: | C-w   | opt-w | C-y   | (zshバッファー)                     |
+
+ Emax: マウス選択 右ボタンコピー  右ボタン貼り付け/cmd-v\\
+ Term:  マウス選択 右ボタンコピー  右ボタン貼り付け/cmd-v
+
+*** 行末までカット&ペースト
+| CODE: | C-k | C-y |                 |
+| Emax: | C-k | C-y |                 |
+| Term: | C-k | C-y | (zshバッファー) |
+
+注意:\\
+CODEでカット/コピーしたものは Emaxで貼り付けられる。
+
+Emax でカット/コピーしたものは CODEでは貼り付けられない。(マウス以外)
+
+Emax でマウスを使って選択、右ボタンでコピーしたものは CODEで貼り付けられる。\\
+     しかし、Emac自身に対しては、右ボタンで貼り付けたあと、キーでも貼り付けられる。
+
+
+*** backslash
+キーボード設定で、(あ)日本語-かな入力 "¥"キーで入力する文字: を \（バックスラッシュ）に変更する。
+|       | \ | ¥    | ¥     |
+|-------+---+------+-------|
+| CODE: | \ | fn+\ | opt+\ |
+| Emax: | \ | fn+\ |       |
+| Term: | \ | fn+\ |       |
+
+
+*** UNDO
+| CODE: | cmd-z | C-z | C-x u | C-/ | C-_   |
+| Emax: |       | C-z | C-x u | C-/ | C-S-_ |
+| Term: |       |     | C-x u | C-/ | C-S-_ |
+
+
+*** 画面終了
+エディターを閉じる
+| CODE: | cmd-w | C-x k |    |
+| Emax: |       | C-x k | f4 |
+
+エディターグループを閉じる
+| CODE: | cmd-w |
+
+*** 終了
+| Emaxの終了 | C-x C-c |
+| Termの終了 | C-d     |
+| CODEの終了 | cmd-S-w |
