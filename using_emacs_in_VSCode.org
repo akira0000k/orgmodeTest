@@ -45,7 +45,7 @@
 | Term: | cmd-home | cmd-end |       |       |
 
 *** ページ移動
-.
+スクロール
 | CODE: | PageUp | PageDown | cmd-n | cmd-p |
 | EMax: | PageUp | PageDown |       |       |
 | Term: | PageUp | PageDown |       |       |
@@ -53,7 +53,7 @@
   (opt-nはチルダが出るのでダメ)
 
 *** カット/コピー&ペースト
-
+コピペ
 |       | cut   | copy  | paste |                                     |
 |-------+-------+-------+-------+-------------------------------------|
 | CODE: | cmd-x | cmd-c | cmd-v | (MAC流)                             |
