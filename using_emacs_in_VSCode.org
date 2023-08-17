@@ -39,11 +39,6 @@
 
 ** VSCODEでのキーバインド設定結果をまとめます。
 
-*** ファイル先頭/末尾
-| CODE: | C-home   | C-end   | C-,   | C-.   |
-| EMax: | C-home   | C-end   | opt-, | opt-. |
-| Term: | cmd-home | cmd-end |       |       |
-
 *** ページ移動
 スクロール
 | CODE: | PageUp | PageDown | cmd-n | cmd-p |
@@ -51,6 +46,11 @@
 | Term: | PageUp | PageDown |       |       |
 
   ~(opt-nはチルダが出るのでダメ)~
+
+*** ファイル先頭/末尾
+| CODE: | C-home   | C-end   | C-,   | C-.   |
+| EMax: | C-home   | C-end   | opt-, | opt-. |
+| Term: | cmd-home | cmd-end |       |       |
 
 *** カット/コピー&ペースト
 |       | cut   | copy  | paste |                                     |
