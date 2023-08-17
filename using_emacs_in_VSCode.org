@@ -47,6 +47,7 @@
 
   ~(opt-nはチルダが出るのでダメ)~
 
+
 *** ファイル先頭/末尾
 | CODE: | C-home   | C-end   | C-,   | C-.   |
 | EMax: | C-home   | C-end   | opt-, | opt-. |
@@ -69,6 +70,7 @@
  Emax: マウス選択 右ボタンコピー  右ボタン貼り付け/cmd-v
  Term:  マウス選択 右ボタンコピー  右ボタン貼り付け/cmd-v
  #+end_example
+
 
 *** 行末までカット&ペースト
 | CODE: | C-k | C-y |                 |
