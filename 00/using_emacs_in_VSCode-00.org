@@ -34,7 +34,7 @@
    カット&ペーストは C-w opt-w C-y  (zshの機能)
 
 *** ユーザーのキーバインド格納ファイル
-   =~/Application Support/Code/User/keybindings.json=
+   ~~/Application Support/Code/User/keybindings.json~
 
 
 ** VSCODEでのキーバインド設定結果をまとめます。
@@ -45,15 +45,12 @@
 | Term: | cmd-home | cmd-end |       |       |
 
 *** ページ移動
-.
 | CODE: | PageUp | PageDown | cmd-n | cmd-p |
 | EMax: | PageUp | PageDown |       |       |
 | Term: | PageUp | PageDown |       |       |
-
   (opt-nはチルダが出るのでダメ)
 
 *** カット/コピー&ペースト
-
 |       | cut   | copy  | paste |                                     |
 |-------+-------+-------+-------+-------------------------------------|
 | CODE: | cmd-x | cmd-c | cmd-v | (MAC流)                             |
