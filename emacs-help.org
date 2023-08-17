@@ -195,9 +195,10 @@
 
     | 標準           | 代替キー |                                                  |
     |----------------+----------+--------------------------------------------------|
-    | C-space        |          | 選択開始　　　　   (Mark Set と表示されます)     |
+    | C-SPC          |          | (Control + Space) 選択開始                       |
     |                |          | このあと カーソル移動で 選択領域が拡大します     |
-    | C-x space      | C-RET    | 矩形選択の開始     (C-RET は cua mode)           |
+    | C-x SPC        |          | (Control + x + Space) 標準矩形選択の開始         |
+    |                | C-RET    | (Control + Return) 矩形選択の開始     (cua-mode) |
     |                |          | このあと カーソル移動で 矩形選択領域が拡大します |
     | C-M-mouse1drag |          | マウスで矩形選択                                 |
     | C-x h          | s-a      | バッファ全選択                                   |
@@ -229,6 +230,8 @@
     | C-y  | C-v      | paste　　　　　　  (C-v は cua-mode)                  |
     |      | M-v      | paste                                                 |
     |      |          | paste 時領域が選択されていれば copyされたもので上書き |
+    | C-k  |          | カーソルより後を削除 (cut)                            |
+    | M-d  |          | 一語削除 (cut)                                        |
     | /    | <        |                                                       |
 
 ** 再表示
@@ -285,10 +288,8 @@
     | C-x RET c | f6       | コーディングシステムの指定をしてコマンドを実行する |
     | /         | <        |                                                    |
     	
-    #+begin_example
-    Coding system for following command (default utf-8-unix): sjis-dos
-    Command to execute with sjis-dos:    ここで C-x C-w などコマンド実行
-    #+end_example
+    ~Coding system for following command (default utf-8-unix): sjis-dos~\\
+    ~Command to execute with sjis-dos:~　　　　ここで C-x C-w などコマンド実行
 
 *** 読み込んだファイルの変更     
 
