@@ -1,5 +1,6 @@
 #+TITLE: Putty でemacsを使うとき
-#+HtML_HEAD: <link rel="stylesheet" type="text/css" href="./css/Solarized(Dark).css">
+#+HtML_HEAD: <link rel="stylesheet" type="text/css" href="./css/org.css">
+#+STARTUP: inlineimages
 
 ** Putty は使えるか。
 
@@ -17,13 +18,17 @@
     "ファンクションキーとキーパッド" の Xterm 216+ を選択
      
     "Shift/Ctrl/Alt + 矢印キー" の xterm風ビットフラグ を選択
-     
+
+    [[file:./PuTTy-fn-config.png]]
+    
     ~PuTTY設定 > 端末 > 高度な設定~
      
     "アプリケーションキーパッドモードを無効にする" をチェック
      
     "アプリケーションカーソルキーモードを無効にする" をチェック
 
+    [[file:PuTTy-ignore-kp-mode.png]]
+    
 ** 使えるキー
 
     #+begin_example
@@ -105,3 +110,4 @@
 
     C-x SPACE で cua-modeの矩形選択開始
     #+end_example
+
